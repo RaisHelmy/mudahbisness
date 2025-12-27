@@ -1,99 +1,95 @@
 import { useState } from 'react';
-import { View, Text, ScrollView, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Alert, TouchableOpacity, StyleSheet } from 'react-native';
 import {
   TabBar,
   TabBarItem,
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
 } from '@mudahbisness/shared';
 
 export default function DashboardExample() {
   const [activeTab, setActiveTab] = useState('home');
 
   return (
-    <View className="flex-1 bg-white">
-      <ScrollView className="flex-1 p-4">
-        <Text className="text-2xl font-bold mb-6 mt-4">Dashboard</Text>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <Text style={styles.title}>Dashboard</Text>
 
-        <View className="gap-4 mb-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Total Sales</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Text className="text-3xl font-bold text-blue-600">$12,345</Text>
-              <Text className="text-sm text-gray-500 mt-1">+12% from last month</Text>
-            </CardContent>
-          </Card>
+        <View style={styles.statsContainer}>
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Text style={styles.cardTitle}>Total Sales</Text>
+            </View>
+            <View style={styles.cardContent}>
+              <Text style={styles.statValue}>{`$12,345`}</Text>
+              <Text style={styles.statChange}>+12% from last month</Text>
+            </View>
+          </View>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Active Users</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Text className="text-3xl font-bold text-green-600">1,234</Text>
-              <Text className="text-sm text-gray-500 mt-1">+5% from last month</Text>
-            </CardContent>
-          </Card>
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Text style={styles.cardTitle}>Active Users</Text>
+            </View>
+            <View style={styles.cardContent}>
+              <Text style={[styles.statValue, styles.greenText]}>1,234</Text>
+              <Text style={styles.statChange}>+5% from last month</Text>
+            </View>
+          </View>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>Products</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Text className="text-3xl font-bold text-purple-600">567</Text>
-              <Text className="text-sm text-gray-500 mt-1">+3 new this week</Text>
-            </CardContent>
-          </Card>
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Text style={styles.cardTitle}>Products</Text>
+            </View>
+            <View style={styles.cardContent}>
+              <Text style={[styles.statValue, styles.purpleText]}>567</Text>
+              <Text style={styles.statChange}>+3 new this week</Text>
+            </View>
+          </View>
         </View>
 
-        <Card className="mb-20">
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <View className="gap-4">
-              <View className="flex-row items-center justify-between py-2 border-b border-gray-200">
+        <View style={[styles.card, styles.activityCard]}>
+          <View style={styles.cardHeader}>
+            <Text style={styles.cardTitle}>Recent Activity</Text>
+          </View>
+          <View style={styles.cardContent}>
+            <View style={styles.activityList}>
+              <View style={styles.activityItem}>
                 <View>
-                  <Text className="font-medium">New order #1234</Text>
-                  <Text className="text-sm text-gray-500">2 minutes ago</Text>
+                  <Text style={styles.activityTitle}>New order #1234</Text>
+                  <Text style={styles.activityTime}>2 minutes ago</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => Alert.alert('View', 'Order #1234')}
-                  className="px-3 py-2 bg-blue-600 rounded-md"
+                  style={styles.viewButton}
                 >
-                  <Text className="text-white text-sm font-medium">View</Text>
+                  <Text style={styles.viewButtonText}>View</Text>
                 </TouchableOpacity>
               </View>
-              <View className="flex-row items-center justify-between py-2 border-b border-gray-200">
+              <View style={styles.activityItem}>
                 <View>
-                  <Text className="font-medium">Product updated</Text>
-                  <Text className="text-sm text-gray-500">1 hour ago</Text>
+                  <Text style={styles.activityTitle}>Product updated</Text>
+                  <Text style={styles.activityTime}>1 hour ago</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => Alert.alert('View', 'Product update')}
-                  className="px-3 py-2 bg-blue-600 rounded-md"
+                  style={styles.viewButton}
                 >
-                  <Text className="text-white text-sm font-medium">View</Text>
+                  <Text style={styles.viewButtonText}>View</Text>
                 </TouchableOpacity>
               </View>
-              <View className="flex-row items-center justify-between py-2">
+              <View style={[styles.activityItem, styles.activityItemLast]}>
                 <View>
-                  <Text className="font-medium">New user registered</Text>
-                  <Text className="text-sm text-gray-500">3 hours ago</Text>
+                  <Text style={styles.activityTitle}>New user registered</Text>
+                  <Text style={styles.activityTime}>3 hours ago</Text>
                 </View>
                 <TouchableOpacity
                   onPress={() => Alert.alert('View', 'User details')}
-                  className="px-3 py-2 bg-blue-600 rounded-md"
+                  style={styles.viewButton}
                 >
-                  <Text className="text-white text-sm font-medium">View</Text>
+                  <Text style={styles.viewButtonText}>View</Text>
                 </TouchableOpacity>
               </View>
             </View>
-          </CardContent>
-        </Card>
+          </View>
+        </View>
       </ScrollView>
 
       <TabBar>
@@ -125,3 +121,100 @@ export default function DashboardExample() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  scrollView: {
+    flex: 1,
+    padding: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 24,
+    marginTop: 16,
+  },
+  statsContainer: {
+    marginBottom: 16,
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  cardHeader: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e7eb',
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  cardContent: {
+    padding: 16,
+  },
+  statValue: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#2563eb',
+  },
+  greenText: {
+    color: '#16a34a',
+  },
+  purpleText: {
+    color: '#9333ea',
+  },
+  statChange: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginTop: 4,
+  },
+  activityCard: {
+    marginBottom: 80,
+  },
+  activityList: {
+    gap: 16,
+  },
+  activityItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e7eb',
+  },
+  activityItemLast: {
+    borderBottomWidth: 0,
+  },
+  activityTitle: {
+    fontWeight: '500',
+    fontSize: 16,
+  },
+  activityTime: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginTop: 2,
+  },
+  viewButton: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: '#2563eb',
+    borderRadius: 6,
+  },
+  viewButtonText: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+});
