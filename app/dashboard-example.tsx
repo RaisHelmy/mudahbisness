@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, ScrollView, Alert } from 'react-native';
+import { View, Text, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import {
   TabBar,
   TabBarItem,
@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
-  Button,
 } from '@mudahbisness/shared';
 
 export default function DashboardExample() {
@@ -61,27 +60,36 @@ export default function DashboardExample() {
                   <Text className="font-medium">New order #1234</Text>
                   <Text className="text-sm text-gray-500">2 minutes ago</Text>
                 </View>
-                <Button size="sm" onPress={() => Alert.alert('View', 'Order #1234')}>
-                  View
-                </Button>
+                <TouchableOpacity
+                  onPress={() => Alert.alert('View', 'Order #1234')}
+                  className="px-3 py-2 bg-blue-600 rounded-md"
+                >
+                  <Text className="text-white text-sm font-medium">View</Text>
+                </TouchableOpacity>
               </View>
               <View className="flex-row items-center justify-between py-2 border-b border-gray-200">
                 <View>
                   <Text className="font-medium">Product updated</Text>
                   <Text className="text-sm text-gray-500">1 hour ago</Text>
                 </View>
-                <Button size="sm" onPress={() => Alert.alert('View', 'Product update')}>
-                  View
-                </Button>
+                <TouchableOpacity
+                  onPress={() => Alert.alert('View', 'Product update')}
+                  className="px-3 py-2 bg-blue-600 rounded-md"
+                >
+                  <Text className="text-white text-sm font-medium">View</Text>
+                </TouchableOpacity>
               </View>
               <View className="flex-row items-center justify-between py-2">
                 <View>
                   <Text className="font-medium">New user registered</Text>
                   <Text className="text-sm text-gray-500">3 hours ago</Text>
                 </View>
-                <Button size="sm" onPress={() => Alert.alert('View', 'User details')}>
-                  View
-                </Button>
+                <TouchableOpacity
+                  onPress={() => Alert.alert('View', 'User details')}
+                  className="px-3 py-2 bg-blue-600 rounded-md"
+                >
+                  <Text className="text-white text-sm font-medium">View</Text>
+                </TouchableOpacity>
               </View>
             </View>
           </CardContent>

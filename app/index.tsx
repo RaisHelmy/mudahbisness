@@ -1,5 +1,4 @@
-import { View, Text, ScrollView } from 'react-native';
-import { Button } from '@mudahbisness/shared';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { router } from 'expo-router';
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect } from 'react';
@@ -15,18 +14,24 @@ export default function Landing() {
   }, [user]);
 
   return (
-    <ScrollView className="flex-1 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <ScrollView className="flex-1 bg-blue-50">
       {/* Header */}
       <View className="bg-white shadow-sm">
         <View className="px-4 py-4 flex-row justify-between items-center">
           <Text className="text-2xl font-bold text-blue-600">MudahBisness</Text>
           <View className="flex-row gap-2">
-            <Button variant="ghost" size="sm" onPress={() => router.push('/(auth)/login')}>
-              Login
-            </Button>
-            <Button size="sm" onPress={() => router.push('/(auth)/signup')}>
-              Sign Up
-            </Button>
+            <TouchableOpacity
+              onPress={() => router.push('/(auth)/login')}
+              className="px-4 py-2 rounded-md"
+            >
+              <Text className="text-blue-600 font-medium">Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push('/(auth)/signup')}
+              className="px-4 py-2 bg-blue-600 rounded-md"
+            >
+              <Text className="text-white font-medium">Sign Up</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -42,12 +47,18 @@ export default function Landing() {
             Simplify your business operations with our powerful and easy-to-use platform
           </Text>
           <View className="w-full px-4 gap-3">
-            <Button onPress={() => router.push('/(auth)/signup')}>
-              Get Started
-            </Button>
-            <Button variant="outline" onPress={() => router.push('/(auth)/login')}>
-              Login to Your Account
-            </Button>
+            <TouchableOpacity
+              onPress={() => router.push('/(auth)/signup')}
+              className="bg-blue-600 py-3 px-6 rounded-lg items-center"
+            >
+              <Text className="text-white font-semibold text-lg">Get Started</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => router.push('/(auth)/login')}
+              className="bg-white border-2 border-blue-600 py-3 px-6 rounded-lg items-center"
+            >
+              <Text className="text-blue-600 font-semibold text-lg">Login to Your Account</Text>
+            </TouchableOpacity>
           </View>
         </View>
 

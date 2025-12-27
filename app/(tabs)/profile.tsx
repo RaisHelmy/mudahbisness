@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, Alert } from 'react-native';
-import { Card, CardHeader, CardTitle, CardContent, Button } from '@mudahbisness/shared';
+import { View, Text, ScrollView, Alert, TouchableOpacity } from 'react-native';
+import { Card, CardHeader, CardTitle, CardContent } from '@mudahbisness/shared';
 import { useAuth } from '@/contexts/AuthContext';
 import { router } from 'expo-router';
 
@@ -67,23 +67,26 @@ export default function ProfileScreen() {
             <CardTitle>Settings</CardTitle>
           </CardHeader>
           <CardContent>
-            <View className="space-y-2">
-              <Button variant="outline" className="mb-2">
-                Edit Profile
-              </Button>
-              <Button variant="outline" className="mb-2">
-                Change Password
-              </Button>
-              <Button variant="outline">
-                Privacy Settings
-              </Button>
+            <View className="gap-2">
+              <TouchableOpacity className="py-3 px-4 border border-gray-300 rounded-lg items-center mb-2">
+                <Text className="text-gray-900 font-medium">Edit Profile</Text>
+              </TouchableOpacity>
+              <TouchableOpacity className="py-3 px-4 border border-gray-300 rounded-lg items-center mb-2">
+                <Text className="text-gray-900 font-medium">Change Password</Text>
+              </TouchableOpacity>
+              <TouchableOpacity className="py-3 px-4 border border-gray-300 rounded-lg items-center">
+                <Text className="text-gray-900 font-medium">Privacy Settings</Text>
+              </TouchableOpacity>
             </View>
           </CardContent>
         </Card>
 
-        <Button variant="destructive" onPress={handleLogout}>
-          Logout
-        </Button>
+        <TouchableOpacity
+          onPress={handleLogout}
+          className="py-3 px-6 bg-red-600 rounded-lg items-center"
+        >
+          <Text className="text-white font-semibold">Logout</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
