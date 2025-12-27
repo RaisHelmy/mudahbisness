@@ -5,6 +5,12 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@mudahbisness/shared": [
+        "../shared/src"
+      ],
+      "@mudahbisness/shared/*": [
+        "../shared/src/*"
       ]
     }
   },
